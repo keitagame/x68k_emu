@@ -56,7 +56,7 @@ uint8_t mfp_read(uint32_t a) {
     case GPIP: {
         uint8_t ret = 0x20;
         if (mach_vline >= crtc_vstart && mach_vline < crtc_vend) ret |= 0x10;
-        ret |= 0x03 | (mfp_gpip_fm ? 0 : 0x08) | 0x04;
+        ret |= 0x03 | (mfp_gpip_fm ? 0 : 0x08);
         int len = mach_line10 ? mach_line10 : 1;
         int pos = (int)((int64_t)cpu.cycles * 10 / (mach_cpu_mhz ? mach_cpu_mhz : 10));
         int ht = crtc_regs[1] ? crtc_regs[1] : 1;
